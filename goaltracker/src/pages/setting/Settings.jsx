@@ -129,5 +129,48 @@ export default function Settings() {
             </Stack>
           </CardContent>
         </Card>
+        
+        {/* Appearance */}
+        <Card elevation={0} sx={sectionCardSx}>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              {t("settings.appearance")}
+            </Typography>
+
+            <Stack
+              gap={1.5}
+              direction={{ xs: "column", sm: "row" }}
+              alignItems={{ xs: "stretch", sm: "center" }}
+            >
+              {/* Language Toggle */}
+              <Button
+                variant="outlined"
+                onClick={() =>
+                  i18n.changeLanguage(i18n.language === "fa" ? "en" : "fa")
+                }
+                sx={{
+                  borderRadius: 999,
+                  px: 2.2,
+                  minHeight: 42,
+                  minWidth: 96,
+                  fontWeight: 800,
+                  textTransform: "none",
+                  borderColor: alpha(primary, 0.48),
+                  color: isDark ? "#c4b5fd" : alpha(primary, 0.9),
+                  bgcolor: isDark
+                    ? alpha("#0f172a", 0.58)
+                    : alpha("#ffffff", 0.88),
+                  "&:hover": {
+                    borderColor: primary,
+                    bgcolor: isDark
+                      ? alpha(primary, 0.2)
+                      : alpha(primary, 0.12),
+                  },
+                }}
+              >
+                {i18n.language === "fa" ? "EN" : "FA"}
+              </Button>
+
+
 
 
