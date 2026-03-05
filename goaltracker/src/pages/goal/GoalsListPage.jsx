@@ -141,8 +141,30 @@ import {
                           : "rgba(148,163,184,0.24)",
                       }}
                     >
-                      <Box
-                        sx={{
+                      <Box <SectionCard
+          title={isFa ? "فیلتر و مرتب‌سازی" : "Filters & Sorting"}
+          sx={{
+            borderColor: alpha(primary, 0.24),
+            background: isDark
+              ? `linear-gradient(180deg, ${alpha(
+                  theme.palette.background.paper,
+                  0.9
+                )}, ${alpha(theme.palette.background.paper, 0.78)})`
+              : `linear-gradient(180deg, ${alpha("#ffffff", 0.96)}, ${alpha(
+                  "#f8fafc",
+                  0.9
+                )})`,
+          }}
+        >
+          <Stack spacing={2}>
+            <Tabs
+              value={tab}
+              onChange={(_, next) => setTab(next)}
+              variant="scrollable"
+            >
+              <Tab
+                sx={{
+                  borderRadi
                           width: `${stats.avgProgress}%`,
                           height: "100%",
                           borderRadius: 999,
@@ -162,6 +184,7 @@ import {
             </Card>
           </Grid>
         </Grid>
+
 
 
 
