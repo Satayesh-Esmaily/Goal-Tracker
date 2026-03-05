@@ -74,4 +74,29 @@ const CreateGoalPage = () => {
               </CardContent>
             </Card>
 
+  <Card>
+              <CardContent>
+                <Typography variant="subtitle1" fontWeight={700}>
+                  {t("createGoalPage.smartTips")}
+                </Typography>
+                <Divider sx={{ my: 1 }} />
+                <Typography variant="body2" color="text.secondary">
+                  {t("createGoalPage.tip1")}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {t("createGoalPage.tip2")}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {t("createGoalPage.tip3")}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Stack>
+        </Box>
+      </Stack>
+    </Container>
+  );
+};
+
+export default CreateGoalPage;
 
