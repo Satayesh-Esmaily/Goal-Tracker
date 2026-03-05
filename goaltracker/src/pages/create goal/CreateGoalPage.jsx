@@ -41,4 +41,25 @@ const CreateGoalPage = () => {
               <GoalForm onPreviewChange={setPreviewData} />
             </CardContent>
           </Card>
+ <Stack spacing={2}>
+            <Card
+              sx={{
+                borderRadius: 3,
+                background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
+                color: "white",
+              }}
+            >
+              <CardContent>
+                <Typography variant="subtitle2" sx={{ opacity: 0.8 }}>
+                  {t("createGoalPage.livePreview")}
+                </Typography>
+
+                <Typography variant="h6" fontWeight={700}>
+                  {previewData?.title || t("createGoalPage.yourGoalTitle")}
+                </Typography>
+
+                <Typography variant="body2" sx={{ mt: 1 }}>
+                  {t("createGoalPage.target")}: {previewData?.target || 0}
+                </Typography>
+
 
