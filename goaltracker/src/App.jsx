@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useMemo, useEffect, useState } from "react";
+import { ThemeProvider } from "@mui/material/styles";
+import { useTranslation } from "react-i18next";
 
-function App() {
-  const [count, setCount] = useState(0)
+import { getTheme } from "./theme/theme";
+import { GoalsProvider } from "./context/GoalsContext";
+import SplashScreen from "./components/common/SplashScreen";
+import { AuthProvider } from "./context/AuthContext";
+import AppRoutes from "./routes/AppRoutes";
 
+import { ThemeProviderCustom, useTheme } from "./context/ThemeContext";
+
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ThemeProviderCustom>
+      <AppInner />
+    </ThemeProviderCustom>
+  );
 }
 
-export default App
+function AppInner() {
+  const { mode, toggleMode, primaryColor, setPrimaryColor } = useTheme();
+  const { i18n } = useTranslation();
+
+  const [showSplash, setShowSplash] = useState(true);
+
+  const direction = i18n.language === "fa" ? "rtl" : "ltr";
+
+  useEffect(() => {
+    document.documentElement.dir = direction;
+  }, [direction]);
+
+  const theme = useMemo(
+    () => getTheme(mode, direction, primaryColor),
+    [mode, direction, primaryColor]
+  );
+
+  return (
+    <ThemeProvider theme={theme}>
+      <AuthProvider>
+        <GoalsProvider>
+          <AppRoutes
+            mode={mode}
+            toggleMode={toggleMode}
+            primaryColor={primaryColor}
+            setPrimaryColor={setPrimaryColor}
+          />
+        </GoalsProvider>
+      </AuthProvider>
+
+      {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
+    </ThemeProvider>
+  );
+}
