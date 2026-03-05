@@ -47,3 +47,12 @@ export default function AppRoutes({
                     />
                   }
                 />
+ <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </AppShell>
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
+}
