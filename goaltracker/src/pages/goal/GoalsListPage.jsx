@@ -1,18 +1,19 @@
 import { useMemo, useState } from "react";
 import {
   Box,
-  Button,
-  Card,
-  CardContent,
-  const { goals, addProgress, togglePause, deleteGoal } = useGoals();
-  const [tab, setTab] = useState("all");
-  const [search, setSearch] = useState("");
-  const [sortBy, setSortBy] = useState("newest");
-  const [goalToDelete, setGoalToDelete] = useState(null);
-
-  const visibleGoals = useMemo(
-    () => goals.filter((goal) => goal.status !== "deleted"),
-    [goals]
+  Button, const stats = useMemo(() => {
+    const active = visibleGoals.filter((g) => g.status === "active").length;
+    const completed = visibleGoals.filter(
+      (g) => g.status === "completed"
+    ).length;
+    const paused = visibleGoals.filter((g) => g.status === "paused").length;
+    const avgProgress =
+      visibleGoals.length === 0
+        ? 0
+        : Math.round(
+            (visibleGoals.reduce(
+              (acc, g) =>
+                acc +
   );
   Container,
   Grid,
@@ -71,4 +72,5 @@ export default function GoalsListPage() {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
   const primary = theme.palette.primary.main;
+
 
