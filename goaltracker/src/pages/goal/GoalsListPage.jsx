@@ -94,8 +94,34 @@ import {
                 />
               </Stack>
             </Stack>
+              icon={<TaskAltRoundedIcon fontSize="small" />}
+              label={t("common.completed")}
+              value={stats.completed}
+              color={theme.palette.success.main}
+              statCardSx={statCardSx}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <StatCard
+              icon={<PauseCircleOutlineRoundedIcon fontSize="small" />}
+              label={t("common.paused")}
+              value={stats.paused}
+              color={theme.palette.warning.main}
+              statCardSx={statCardSx}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Card elevation={0} sx={statCardSx}>
+              <CardContent>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={2}
+                  alignItems={{ xs: "flex-start", sm: "center" }}
+                  justifyContent="space-between"
+                >
           </CardContent>
         </Card>
+
 
 
 
