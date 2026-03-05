@@ -353,6 +353,131 @@ export default function Settings() {
             </RadioGroup>
           </CardContent>
         </Card>
+ {/* Preferences */}
+        <Card elevation={0} sx={sectionCardSx}>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              {t("settings.preferences")}
+            </Typography>
+
+            <Stack spacing={2}>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={reminder}
+                    onChange={() => setReminder(!reminder)}
+                    color="primary"
+                  />
+                }
+                label={t("settings.dailyReminder")}
+              />
+              <Typography variant="body2" color="text.secondary" sx={{ ml: 4 }}>
+                {i18n.language === "fa"
+                  ? "دریافت یادآوری روزانه برای ثبت پیشرفت"
+                  : "Receive daily notifications to log your progress"}
+              </Typography>
+
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={animations}
+                    onChange={() => setAnimations(!animations)}
+                    color="primary"
+                  />
+                }
+                label={t("settings.animations")}
+              />
+              <Typography variant="body2" color="text.secondary" sx={{ ml: 4 }}>
+                {i18n.language === "fa"
+                  ? "انیمیشن‌های روان تجربه کاربری را بهتر می‌کنند"
+                  : "Smooth animations enhance UI experience"}
+              </Typography>
+            </Stack>
+
+            <Divider sx={{ my: 2 }} />
+
+            <Typography variant="subtitle1" gutterBottom>
+              {t("settings.weekStart")}
+            </Typography>
+
+            <RadioGroup
+              row
+              value={weekStart}
+              onChange={(e) => setWeekStart(e.target.value)}
+            >
+              <FormControlLabel
+                value="monday"
+                control={<Radio />}
+                label={t("settings.monday")}
+              />
+              <FormControlLabel
+                value="sunday"
+                control={<Radio />}
+                label={t("settings.sunday")}
+              />
+            </RadioGroup>
+          </CardContent>
+        </Card>
+
+        {/* Danger Zone */}
+        <Card
+          elevation={0}
+          sx={{
+            border: "1px solid",
+            borderColor: alpha(muiTheme.palette.error.main, 0.35),
+            borderRadius: 3,
+            overflow: "hidden",
+            background: isDark
+              ? `linear-gradient(180deg, ${alpha(
+                  muiTheme.palette.background.paper,
+                  0.92
+                )}, ${alpha(muiTheme.palette.error.dark, 0.12)})`
+              : `linear-gradient(180deg, ${alpha("#ffffff", 0.98)}, ${alpha(
+                  muiTheme.palette.error.light,
+                  0.08
+                )})`,
+            boxShadow: isDark
+              ? "0 10px 26px rgba(2,6,23,0.32)"
+              : "0 10px 22px rgba(15,23,42,0.08)",
+          }}
+        >
+          <CardContent>
+            <Typography variant="h6" gutterBottom sx={{ color: "error.main" }}>
+              {t("settings.dangerZone")}
+            </Typography>
+            <Button
+              startIcon={<WarningAmberIcon />}
+              color="error"
+              variant="contained"
+              onClick={() => setOpenConfirm(true)}
+              sx={{
+                "&:hover": {
+                  background: "linear-gradient(45deg, #ff1744, #f50057)",
+                },
+                gap: 1,
+              }}
+            >
+              {t("settings.reset")}
+            </Button>
+
+            <Dialog open={openConfirm} onClose={() => setOpenConfirm(false)}>
+              <DialogTitle>⚠️ {t("settings.confirmTitle")}</DialogTitle>
+              <DialogContent>{t("settings.confirmText")}</DialogContent>
+              <DialogActions>
+                <Button onClick={() => setOpenConfirm(false)}>
+                  {t("common.cancel")}
+                </Button>
+                <Button color="error" onClick={handleReset}>
+                  {t("settings.reset")}
+                </Button>
+              </DialogActions>
+            </Dialog>
+          </CardContent>
+        </Card>
+      </Stack>
+    </Container>
+  );
+}
 
 
 
