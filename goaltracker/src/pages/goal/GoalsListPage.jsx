@@ -4,25 +4,27 @@ import {
         progress,
         status,
         startDate,
-        endDate,
-        deadline,
-        logs,
-      }) => ({
-        id,
-        title,
-        category,
-        type,
-        target,
-        progress,
-        status,
-        startDate,
-        endDate,
-        deadline,
-        logs,
-      })
-    );
-
-    const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(
+    nst statCardSx = {
+    border: "1px solid",
+    borderColor: "divider",
+    borderRadius: 3,
+    height: "100%",
+    background: isDark
+      ? `linear-gradient(180deg, ${alpha(
+          theme.palette.background.paper,
+          0.92
+        )}, ${alpha(theme.palette.background.paper, 0.72)})`
+      : `linear-gradient(180deg, ${alpha(
+          theme.palette.background.paper,
+          0.96
+        )}, ${alpha("#f8fafc", 0.94)})`,
+    boxShadow: isDark
+      ? "0 12px 30px rgba(2,6,23,0.32)"
+      : "0 8px 24px rgba(15,23,42,0.08)",
+    transition:
+      "transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease",
+    "&:hover": {
+      transform: "transon;charset=utf-8,${encodeURIComponent(
       JSON.stringify(goalsToExport, null, 2)
     )}`;
     const downloadAnchorNode = document.createElement("a");
@@ -91,6 +93,7 @@ export default function GoalsListPage() {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
   const primary = theme.palette.primary.main;
+
 
 
 
