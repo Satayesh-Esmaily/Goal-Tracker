@@ -503,12 +503,3 @@ export default function GoalsListPage() {
     </Container>
   );
 }
-
-
-
-
-
-
-
-
-
