@@ -37,3 +37,29 @@ export default function EditGoalPage() {
   );
 
   const xpEarned = (goal.logs?.length || 0) * 20;
+
+ return (
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Stack spacing={4}>
+        <Typography variant="h4" fontWeight={800}>
+          ✏️ Edit Goal
+        </Typography>
+
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", md: "1fr 2fr" },
+            gap: 3,
+          }}
+        >
+          <Stack spacing={2}>
+            <Card>
+              <CardContent>
+                <Typography variant="subtitle2" color="text.secondary">
+                  Progress
+                </Typography>
+                <Typography variant="h5" fontWeight={700}>
+                  {progressRate}%
+                </Typography>
+              </CardContent>
+            </Card>
