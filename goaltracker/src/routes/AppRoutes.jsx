@@ -1,0 +1,12 @@
+import { Navigate, Route, Routes } from "react-router-dom";
+import DashboardPage from "../pages/dashboard/DashboardPage";
+import CreateGoalPage from "../pages/create goal/CreateGoalPage";
+import EditGoalPage from "../pages/create goal/EditGoalPage";
+import Settings from "../pages/setting/Settings";
+import GoalsListPage from "../pages/goal/GoalsListPage";
+import CategoriesPage from "../pages/category/CategoriesPage";
+import ArchivePage from "../pages/archive/ArchivePage";
+import NotFoundPage from "../pages/not found/NotFoundPage";
+import LoginPage from "../pages/auth/LoginPage";
+import ProtectedRoute from "../components/auth/ProtectedRoute";
+import AppShell from "../components/layout/AppShell";
