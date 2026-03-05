@@ -10,3 +10,40 @@ import NotFoundPage from "../pages/not found/NotFoundPage";
 import LoginPage from "../pages/auth/LoginPage";
 import ProtectedRoute from "../components/auth/ProtectedRoute";
 import AppShell from "../components/layout/AppShell";
+
+export default function AppRoutes({
+  mode,
+  toggleMode,
+  primaryColor,
+  setPrimaryColor,
+}) {
+  return (
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="*"
+        element={
+          <ProtectedRoute>
+            <AppShell mode={mode} toggleTheme={toggleMode}>
+              <Routes>
+                <Route path="/" element={<DashboardPage />} />
+                <Route
+                  path="/dashboard"
+                  element={<Navigate to="/" replace />}
+                />
+                <Route path="/goals" element={<GoalsListPage />} />
+                <Route path="/archive" element={<ArchivePage />} />
+                <Route path="/goals/new" element={<CreateGoalPage />} />
+                <Route path="/goals/:id/edit" element={<EditGoalPage />} />
+                <Route path="/categories" element={<CategoriesPage />} />
+                <Route
+                  path="/settings"
+                  element={
+                    <Settings
+                      currentTheme={mode}
+                      toggleTheme={toggleMode}
+                      primaryColor={primaryColor}
+                      setPrimaryColor={setPrimaryColor}
+                    />
+                  }
+                />
