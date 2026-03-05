@@ -170,6 +170,48 @@ export default function Settings() {
               >
                 {i18n.language === "fa" ? "EN" : "FA"}
               </Button>
+                 {/* Dark/Light Mode */}
+              <Tooltip
+                title={mode === "dark" ? t("common.dark") : t("common.light")}
+              >
+                <Button
+                  onClick={toggleMode}
+                  variant="outlined"
+                  startIcon={
+                    mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />
+                  }
+                  sx={{
+                    gap: 1,
+                    borderRadius: 999,
+                    px: 2.2,
+                    minHeight: 42,
+                    minWidth: 130,
+                    fontWeight: 800,
+                    textTransform: "none",
+                    borderColor: alpha(primary, 0.48),
+                    color: isDark ? "#e2e8f0" : "#0f172a",
+                    bgcolor: isDark
+                      ? alpha("#0f172a", 0.58)
+                      : alpha("#ffffff", 0.88),
+                    "&:hover": {
+                      borderColor: primary,
+                      bgcolor: isDark
+                        ? alpha(primary, 0.2)
+                        : alpha(primary, 0.12),
+                    },
+                    "& .MuiButton-startIcon": {
+                      margin: 0,
+                    },
+                  }}
+                >
+                  {mode === "dark" ? t("common.dark") : t("common.light")}
+                </Button>
+              </Tooltip>
+            </Stack>
+          </CardContent>
+        </Card>
+
+
 
 
 
