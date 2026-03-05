@@ -3,17 +3,17 @@ import {
   Box,
   Button, const stats = useMemo(() => {
     const active = visibleGoals.filter((g) => g.status === "active").length;
-    const completed = visibleGoals.filter(
-      (g) => g.status === "completed"
-    ).length;
-    const paused = visibleGoals.filter((g) => g.status === "paused").length;
-    const avgProgress =
-      visibleGoals.length === 0
-        ? 0
-        : Math.round(
-            (visibleGoals.reduce(
-              (acc, g) =>
-                acc +
+    const   Math.min(
+                  (Number(g.progress) || 0) /
+                    Math.max(1, Number(g.target) || 1),
+                  1
+                ),
+              0
+            ) /
+              visibleGoals.length) *
+              100
+          );
+    return {
   );
   Container,
   Grid,
@@ -72,5 +72,6 @@ export default function GoalsListPage() {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
   const primary = theme.palette.primary.main;
+
 
 
