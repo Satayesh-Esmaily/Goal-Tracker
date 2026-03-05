@@ -62,4 +62,16 @@ const CreateGoalPage = () => {
                   {t("createGoalPage.target")}: {previewData?.target || 0}
                 </Typography>
 
+  <Chip
+                  icon={<TrendingUpIcon />}
+                  label={t("createGoalPage.estimatedXp")}
+                  sx={{
+                    mt: 2,
+                    bgcolor: "rgba(255,255,255,0.2)",
+                    color: "white",
+                  }}
+                />
+              </CardContent>
+            </Card>
+
 
