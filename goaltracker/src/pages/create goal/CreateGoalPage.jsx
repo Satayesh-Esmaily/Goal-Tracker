@@ -16,7 +16,8 @@ import GoalForm from "../../components/goals/GoalForm";
 const CreateGoalPage = () => {
   const [previewData, setPreviewData] = useState(null);
   const { t } = useTranslation();
- return (
+
+  return (
     <Container maxWidth="lg" sx={{ py: { xs: 3, md: 5 } }}>
       <Stack spacing={4}>
         <Stack spacing={1}>
@@ -41,7 +42,8 @@ const CreateGoalPage = () => {
               <GoalForm onPreviewChange={setPreviewData} />
             </CardContent>
           </Card>
- <Stack spacing={2}>
+
+          <Stack spacing={2}>
             <Card
               sx={{
                 borderRadius: 3,
@@ -62,7 +64,7 @@ const CreateGoalPage = () => {
                   {t("createGoalPage.target")}: {previewData?.target || 0}
                 </Typography>
 
-  <Chip
+                <Chip
                   icon={<TrendingUpIcon />}
                   label={t("createGoalPage.estimatedXp")}
                   sx={{
@@ -74,7 +76,7 @@ const CreateGoalPage = () => {
               </CardContent>
             </Card>
 
-  <Card>
+            <Card>
               <CardContent>
                 <Typography variant="subtitle1" fontWeight={700}>
                   {t("createGoalPage.smartTips")}
@@ -99,4 +101,3 @@ const CreateGoalPage = () => {
 };
 
 export default CreateGoalPage;
-
