@@ -54,3 +54,10 @@ function StatCard({ icon, label, value, color, statCardSx }) {
   );
 }
 
+export default function GoalsListPage() {
+  const navigate = useNavigate();
+  const { i18n, t } = useTranslation();
+  const isFa = i18n.language === "fa";
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
+  const primary = theme.palette.primary.main;
