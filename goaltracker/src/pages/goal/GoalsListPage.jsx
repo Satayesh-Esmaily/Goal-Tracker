@@ -4,6 +4,16 @@ import {
   Button,
   Card,
   CardContent,
+  const { goals, addProgress, togglePause, deleteGoal } = useGoals();
+  const [tab, setTab] = useState("all");
+  const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState("newest");
+  const [goalToDelete, setGoalToDelete] = useState(null);
+
+  const visibleGoals = useMemo(
+    () => goals.filter((goal) => goal.status !== "deleted"),
+    [goals]
+  );
   Container,
   Grid,
   MenuItem,
@@ -61,3 +71,4 @@ export default function GoalsListPage() {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
   const primary = theme.palette.primary.main;
+
