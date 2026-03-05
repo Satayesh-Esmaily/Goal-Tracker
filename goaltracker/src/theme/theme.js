@@ -26,4 +26,12 @@ export const getTheme = (mode, direction = "ltr", primaryColor = "blue") => {
       h5: { fontWeight: 700 },
       h6: { fontWeight: 700 },
     },
+      components: {
+      MuiCard: { styleOverrides: { root: { borderRadius: 12 } } },
+      MuiPaper: { styleOverrides: { root: { backgroundImage: "none" } } },
+      MuiButton: { defaultProps: { disableElevation: true } },
+    },
+  });
+};
+
 
