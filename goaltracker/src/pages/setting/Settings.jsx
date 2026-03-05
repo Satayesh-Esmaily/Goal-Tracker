@@ -295,6 +295,65 @@ export default function Settings() {
             </Stack>
           </CardContent>
         </Card>
+  {/* Theme Color */}
+        <Card elevation={0} sx={sectionCardSx}>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              {t("settings.themeColor")}
+            </Typography>
+            <RadioGroup
+              row
+              value={primaryColor}
+              onChange={(e) => setPrimaryColor(e.target.value)}
+            >
+              {themeColors.map((color) => (
+                <Tooltip
+                  key={color.value}
+                  title={t(`settings.colors.${color.value}`)}
+                  placement="top"
+                >
+                  <FormControlLabel
+                    value={color.value}
+                    control={
+                      <Radio
+                        sx={{
+                          color: color.hex,
+                          "&.Mui-checked": { color: color.hex },
+                        }}
+                      />
+                    }
+                    label={
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          width: 24,
+                          height: 24,
+                          borderRadius: "50%",
+                          bgcolor: color.hex,
+                          border: "2px solid",
+                          borderColor:
+                            primaryColor === color.value
+                              ? isDark
+                                ? "#e2e8f0"
+                                : "#0f172a"
+                              : "transparent",
+                          boxShadow:
+                            primaryColor === color.value
+                              ? "0 0 0 3px rgba(59,130,246,0.18)"
+                              : "none",
+                        }}
+                      />
+                    }
+                    sx={{ alignItems: "center" }}
+                  />
+                </Tooltip>
+              ))}
+            </RadioGroup>
+          </CardContent>
+        </Card>
+
 
 
 
