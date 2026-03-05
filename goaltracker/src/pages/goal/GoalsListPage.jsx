@@ -1,26 +1,37 @@
 import { useMemo, useState } from "react";
 import {
-  Box,
-  Button, const stats = useMemo(() => {
-    const ac total: visibleGoals.length,
-      active,
-      completed,
-      paused,
-      avgProgress,
-    };
-  }, [visibleGoals]);
-
-  const filteredGoals = useMemo(
-    () => sortAndFilterGoals(visibleGoals, { tab, search, sortBy }),
-    [visibleGoals, tab, search, sortBy]
-  );
-
-  const handleExport = () => {
-    if (!visibleGoals.length) return;
-    const goalsToExport = visibleGoals.map(
-      ({
+   target,
+        progress,
+        status,
+        startDate,
+        endDate,
+        deadline,
+        logs,
+      }) => ({
         id,
         title,
+        category,
+        type,
+        target,
+        progress,
+        status,
+        startDate,
+        endDate,
+        deadline,
+        logs,
+      })
+    );
+
+    const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(
+      JSON.stringify(goalsToExport, null, 2)
+    )}`;
+    const downloadAnchorNode = document.createElement("a");
+    downloadAnchorNode.setAttribute("href", dataStr);
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  };
+
         category,
         type,
   Container,
@@ -80,6 +91,7 @@ export default function GoalsListPage() {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
   const primary = theme.palette.primary.main;
+
 
 
 
