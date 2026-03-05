@@ -121,6 +121,48 @@ import {
                 >
           </CardContent>
         </Card>
+ <Stack direction="row" spacing={1} alignItems="center">
+                    <TimelineRoundedIcon
+                      sx={{ color: primary }}
+                      fontSize="small"
+                    />
+                    <Typography variant="body2" color="text.secondary">
+                      {isFa ? "میانگین پیشرفت" : "Average Progress"}
+                    </Typography>
+                  </Stack>
+                  <Box sx={{ minWidth: 220, width: { xs: "100%", sm: 320 } }}>
+                    <Box
+                      sx={{
+                        height: 12,
+                        borderRadius: 999,
+                        overflow: "hidden",
+                        bgcolor: isDark
+                          ? "rgba(148,163,184,0.2)"
+                          : "rgba(148,163,184,0.24)",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: `${stats.avgProgress}%`,
+                          height: "100%",
+                          borderRadius: 999,
+                          background: `linear-gradient(90deg, ${primary}, ${alpha(
+                            primary,
+                            0.65
+                          )})`,
+                        }}
+                      />
+                    </Box>
+                  </Box>
+                  <Typography variant="h6" fontWeight={800}>
+                    {stats.avgProgress}%
+                  </Typography>
+                </Stack>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+
 
 
 
