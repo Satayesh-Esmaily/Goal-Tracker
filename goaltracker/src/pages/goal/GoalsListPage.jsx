@@ -2,19 +2,27 @@ import { useMemo, useState } from "react";
 import {
   Box,
   Button, const stats = useMemo(() => {
-    const active = visibleGoals.filter((g) => g.status === "active").length;
-    const   Math.min(
-                  (Number(g.progress) || 0) /
-                    Math.max(1, Number(g.target) || 1),
-                  1
-                ),
-              0
-            ) /
-              visibleGoals.length) *
-              100
-          );
-    return {
+    const ac total: visibleGoals.length,
+      active,
+      completed,
+      paused,
+      avgProgress,
+    };
+  }, [visibleGoals]);
+
+  const filteredGoals = useMemo(
+    () => sortAndFilterGoals(visibleGoals, { tab, search, sortBy }),
+    [visibleGoals, tab, search, sortBy]
   );
+
+  const handleExport = () => {
+    if (!visibleGoals.length) return;
+    const goalsToExport = visibleGoals.map(
+      ({
+        id,
+        title,
+        category,
+        type,
   Container,
   Grid,
   MenuItem,
@@ -72,6 +80,7 @@ export default function GoalsListPage() {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
   const primary = theme.palette.primary.main;
+
 
 
 
