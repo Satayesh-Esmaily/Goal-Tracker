@@ -62,5 +62,41 @@ import {
           </CardContent>
         </Card>
 
+          <CardContent sx={{ p: { xs: 2, md: 3 } }}>
+            <Stack
+              direction={{ xs: "column", md: "row" }}
+              justifyContent="space-between"
+              alignItems={{ xs: "flex-start", md: "center" }}
+              spacing={2}
+            >
+              <Stack spacing={0.75}>
+                <Typography variant="h4" fontWeight={900}>
+                  {t("goalsPage.title")}
+                </Typography>
+                <Typography color="text.secondary">
+                  {isFa
+                    ? "اهداف خود را مدیریت، فیلتر و پیگیری کنید."
+                    : "Manage, filter, and track all your goals."}
+                </Typography>
+              </Stack>
+              <Stack direction={{ xs: "column", sm: "row" }} gap={1.5}>
+                <Button
+                  variant="contained"
+                  startIcon={<AddRoundedIcon />}
+                  onClick={() => navigate("/goals/new")}
+                >
+                  {isFa ? "هدف جدید" : "New Goal"}
+                </Button>
+                <ExportButton
+                  goals={visibleGoals}
+                  fileName="goals_export.json"
+                  disabled={visibleGoals.length === 0}
+                />
+              </Stack>
+            </Stack>
+          </CardContent>
+        </Card>
+
+
 
 
