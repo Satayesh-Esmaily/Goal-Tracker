@@ -3,22 +3,26 @@
         {filteredGoals.length === 0 ? (
           <Card
             elevation={0}
-            sx={{
-              border: "1px dashed",
-              borderColor: "divider",
-              borderRadius: 3,
-              textAlign: "center",
-              py: { xs: 5, md: 7 },
-              px: 2,
-              background: isDark
-                ? "linear-gradient(180deg, rgba(15,23,42,0.75), rgba(15,23,42,0.55))"
-                : "linear-gradient(180deg, rgba(255,255,255,0.95), rgba(248,250,252,0.92))",
-              boxShadow: isDark
-                ? "0 12px 30px rgba(2,6,23,0.35)"
-                : "0 10px 24px rgba(15,23,42,0.08)",
-            }}
-          >
-            <Stack spacing={1.2} alignItems="center">
+            sx={<ConfirmDialog
+          open={Boolean(goalToDelete)}
+          title={isFa ? "⚠️ مطمئن هستید؟" : "⚠️ Are you sure?"}
+          description={
+            goalToDelete
+              ? `${isFa ? "حذف" : "Delete"} "${goalToDelete.title}"?`
+              : ""
+          }
+          confirmLabel={isFa ? "حذف" : "Delete"}
+          onCancel={() => setGoalToDelete(null)}
+          onConfirm={() => {
+            if (!goalToDelete) return;
+            deleteGoal(goalToDelete.id);
+            setGoalToDelete(null);
+          }}
+        />
+      </Stack>
+    </Container>
+  );
+}
               <Box
                 sx={{
                   width: 54,
@@ -85,6 +89,7 @@
             </Stack>
           </Stack>
         </SectionCard>
+
 
 
 
