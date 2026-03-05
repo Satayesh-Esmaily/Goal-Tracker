@@ -210,6 +210,91 @@ export default function Settings() {
             </Stack>
           </CardContent>
         </Card>
+   {/* Profile */}
+        <Card elevation={0} sx={sectionCardSx}>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              {t("settings.profile.title")}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+              {t("settings.profile.subtitle")}
+            </Typography>
+
+            <Stack spacing={2}>
+              <TextField
+                label={t("settings.profile.name")}
+                value={profileName}
+                onChange={(event) => {
+                  setProfileSaved(false);
+                  setProfileName(event.target.value);
+                }}
+                fullWidth
+              />
+              <TextField
+                label={t("settings.profile.email")}
+                value={profileEmail}
+                onChange={(event) => {
+                  setProfileSaved(false);
+                  setProfileEmail(event.target.value);
+                }}
+                fullWidth
+              />
+              <TextField
+                select
+                label={t("settings.profile.mainFocus")}
+                value={profileFocus}
+                onChange={(event) => {
+                  setProfileSaved(false);
+                  setProfileFocus(event.target.value);
+                }}
+                fullWidth
+              >
+                <MenuItem value="study">{t("loginPage.focus.study")}</MenuItem>
+                <MenuItem value="work">{t("loginPage.focus.work")}</MenuItem>
+                <MenuItem value="health">
+                  {t("loginPage.focus.health")}
+                </MenuItem>
+                <MenuItem value="personal">
+                  {t("loginPage.focus.personal")}
+                </MenuItem>
+              </TextField>
+
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Typography
+                  variant="caption"
+                  color={profileSaved ? "success.main" : "text.secondary"}
+                >
+                  {profileSaved
+                    ? t("settings.profile.saved")
+                    : t("settings.profile.helper")}
+                </Typography>
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    updateProfile({
+                      name: profileName,
+                      email: profileEmail,
+                      focusArea: profileFocus,
+                    });
+                    setProfileSaved(true);
+                  }}
+                  sx={{
+                    borderRadius: 2.5,
+                    textTransform: "none",
+                    fontWeight: 700,
+                    px: 2.2,
+                  }}
+                >
+                  {t("settings.profile.save")}
+                </Button>
+              </Stack>
+            </Stack>
+          </CardContent>
+        </Card>
 
 
 
